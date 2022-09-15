@@ -1,18 +1,20 @@
 import { useContext } from 'react';
-import appContext from '../context';
 import AddTodo from './AddTodo';
 import Card from './Card';
 import LeftSide from './LeftSide';
 import SortCard from './SortCard';
+import appContext from '../context';
 
 const Content = () => {
-  const {} = useContext(appContext);
+  const { store }: any = useContext(appContext);
   return (
     <div className='content'>
       <LeftSide />
       <div className='overflow'>
         <div className='display'>
-          <Card />
+          {store.map((el: any) => (
+            <Card task={el} />
+          ))}
         </div>
         <SortCard />
         <AddTodo />

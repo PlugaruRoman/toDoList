@@ -1,36 +1,25 @@
-import React, { ChangeEvent, useState } from 'react';
 import './App.scss';
 import appContext from './context';
 import Content from './components/Content';
 import Header from './components/Header';
-import { ITask } from './Interface';
+import store from './store';
+import React, { useState } from 'react';
+
 const App = () => {
-  const [task, setTask] = useState<string>('');
-  const [priority, setPriority] = useState<number>(0);
-  const [todoList, setTodoList] = useState<ITask[]>([]);
-
-  const onChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    if (event.target.name === 'task') {
-      setTask(event.target.value);
-      console.log(event.target.value);
-    } else {
-      setPriority(Number(event.target.value));
-    }
-  };
-
-  const addTask = (): void => {
-    const newTask = { taskName: task, priority: priority };
-    setTodoList([...todoList, newTask]);
-    console.log(todoList);
+  const [todos, setTodos] = useState(store);
+  console.log(setTodos);
+  const [todo, setTodo] = useState(store);
+  console.log('@todo', todo);
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setTodo({ ...todo, [name]: value });
   };
 
   return (
-    <appContext.Provider
-      value={{ task, priority, todoList, onChange, addTask }}
-    >
+    <appContext.Provider value={{ store, onChange, todo }}>
       <div className='wrapper'>
         <div className='app'>
-          <Header />
+          <Header todoCount={todos.length} />
           <Content />
         </div>
       </div>

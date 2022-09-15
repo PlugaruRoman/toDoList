@@ -1,30 +1,31 @@
-import React from 'react';
 import { useContext } from 'react';
 import appContext from '../context';
 
 const AddTodo = () => {
-  const { onClickButton, addTask }: any = useContext(appContext);
+  const { onChange, todo }: any = useContext(appContext);
   return (
     <div className='addtodo'>
       <div className='inputcontainer'>
         <input
-          onChange={onClickButton}
           placeholder='Task...'
           className='texttodo'
-          name='task'
+          name='name'
           type='text'
+          id='name'
+          onChange={onChange}
+          value={todo.value}
         />
         <input
-          onChange={onClickButton}
           placeholder='Priority...'
           className='texttodo'
           name='priority'
           type='number'
+          id='priority'
+          onChange={onChange}
+          value={todo.description}
         />
       </div>
-      <button onClick={() => addTask()} className='addtodobutton'>
-        Add Todo
-      </button>
+      <button className='addtodobutton'>Add Todo</button>
     </div>
   );
 };

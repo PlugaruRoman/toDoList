@@ -1,1 +1,109 @@
+.wrapper {
+  text-align: center;
+}
 
+.app {
+  margin: 10px auto 10px;
+  width: 900px;
+  height: 600px;
+  border: 2px solid black;
+  position: relative;
+  .header {
+    height: 50px;
+    border-bottom: 2px solid black;
+    display: flex;
+    align-items: center;
+    .title {
+      font-weight: bold;
+      font-size: 25px;
+      line-height: 24px;
+      text-transform: uppercase;
+      margin-left: 20px;
+      &:after {
+        content: '';
+      }
+    }
+    .categoryname {
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 24px;
+      text-transform: uppercase;
+      margin-left: 60px;
+    }
+  }
+  .leftbar {
+    display: block;
+    width: 200px;
+    height: 548px;
+    border-right: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .categorylist {
+      .categorycard {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        border-bottom: 2px solid black;
+      }
+    }
+    .addcategory {
+      background: #000;
+      color: white;
+      height: 40px;
+    }
+  }
+  .content {
+    display: flex;
+    .overflow {
+      overflow-y: scroll;
+      overflow-x: hidden;
+      height: 548px;
+    }
+    .display {
+      width: 700px;
+      border: 2px sodid black;
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      .card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 25px;
+        width: 180px;
+        height: 200px;
+        border: 2px solid black;
+      }
+    }
+    .addtodo {
+      position: absolute;
+      right: 20px;
+      bottom: 10px;
+      width: 200px;
+      height: 80px;
+      border: solid 2px black;
+      .texttodo {
+        height: 25px;
+      }
+      .addtodobutton {
+        background: #000;
+        color: white;
+        width: 80px;
+        height: 20px;
+        border-radius: 20px;
+      }
+    }
+    .sortcard {
+      position: absolute;
+      right: 20px;
+      top: 30px;
+      background: #000;
+      color: white;
+      width: 80px;
+      height: 20px;
+    }
+  }
+}

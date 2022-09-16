@@ -1,4 +1,4 @@
-import styles from './AddTodoPanel.module.scss';
+import styles from './TodoPanel.module.scss';
 
 interface AddTodoPanelProps {
   addTodo: ({ name, priority }: Omit<Todo, 'checked' | 'id'>) => void;
@@ -7,34 +7,31 @@ interface AddTodoPanelProps {
   mode: 'add';
 }
 interface EditTodoPanelProps {
+  addTodo: ({ name, priority }: Omit<Todo, 'checked' | 'id'>) => void;
   changeTodo: ({ name, priority }: Omit<Todo, 'checked' | 'id'>) => void;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   todo: TodoOne;
-  mode: 'add';
-  editTodo:Omit<Todo,"id"|"checked"
+  mode: 'edit';
+  editTodo: Omit<Todo, 'id' | 'checked'>;
 }
 
-type TodoPanelProps = AddTodoPanelProps|EditTodoPanelProps
+type TodoPanelProps = AddTodoPanelProps | EditTodoPanelProps;
 
-
-
-const AddTodoPanel: React.FC<AddTodoPanelProps> = (props) => {
-
-  const isEdit = props.todo.mode==="edit" 
+const TodoPanel: React.FC<TodoPanelProps> = (props) => {
+  const isEdit = props.mode === 'edit';
 
   const onClick = () => {
-    const todoItem ={
+    const todoItem = {
       name: props.todo.name,
       priority: props.todo.priority,
-    }
-    if(isEdit){
-      return props.changeTodo(todoItem)
+    };
+    if (isEdit) {
+      return props.changeTodo(todoItem);
     }
     props.addTodo({
       name: props.todo.name,
       priority: props.todo.priority,
     });
-    props.setTodo()
   };
 
   return (
@@ -64,10 +61,17 @@ const AddTodoPanel: React.FC<AddTodoPanelProps> = (props) => {
           />
         </div>
       </div>
-      <button onClick={onClick} className={styles.addTodoButton}>
-        Add Todo
-      </button>
+      {!isEdit && (
+        <button onClick={onClick} className={styles.addTodoButton}>
+          Add Todo
+        </button>
+      )}
+      {isEdit && (
+        <button onClick={onClick} className={styles.addTodoButton}>
+          Edit
+        </button>
+      )}
     </div>
   );
 };
-export default AddTodoPanel;
+export default TodoPanel;

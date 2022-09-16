@@ -1,7 +1,7 @@
 import LeftSide from '../LeftSide/LeftSide';
 import Card from '../Card/Card';
 import styles from './Content.module.scss';
-import AddTodoPanel from '../AddTodoPanel/AddTodoPanel';
+import TodoPanel from '../TodoPanel/TodoPanel';
 interface ContentProps {
   todos: Todo[];
   todoIdForEdIT: Todo['id'] | null;
@@ -29,10 +29,10 @@ const Content: React.FC<ContentProps> = ({
       <div className={styles.overflow}>
         <div className={styles.display}>
           {todos.map((todo) => {
-            // @ts-ignore
             if (todo.id === todoIdForEdIT)
+              // @ts-ignore
               return (
-                <AddTodoPanel
+                <TodoPanel
                   addTodo={addTodo}
                   onChange={onChange}
                   todo={todo}

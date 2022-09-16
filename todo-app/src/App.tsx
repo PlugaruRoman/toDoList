@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { STORE, DEFAULT_STORE } from './store';
 import styles from './App.module.scss';
-import AddTodoPanel from './components/AddTodoPanel/AddTodoPanel';
+import TodoPanel from './components/TodoPanel/TodoPanel';
 import Header from './components/Header/Header';
 import Content from './components/Content/Content';
 
@@ -54,7 +54,7 @@ const App = () => {
     <div className={styles.wrapper}>
       <div className={styles.app}>
         <Header todoCount={todos.length} />
-        <AddTodoPanel addTodo={addTodo} onChange={onChange} todo={todo} />
+        <TodoPanel addTodo={addTodo} onChange={onChange} todo={todo} />
         <Content
           addTodo={addTodo}
           onChange={onChange}

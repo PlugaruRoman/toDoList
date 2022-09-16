@@ -1,0 +1,46 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 25px;
+  width: 180px;
+  height: 200px;
+  border: 2px solid black;
+  position: relative;
+
+  .cardItemButtons {
+    display: flex;
+    justify-content: space-between;
+    .editCard > button {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      background: rgb(254, 233, 0);
+      color: rgb(35, 34, 34);
+      width: 80px;
+      height: 20px;
+      border-radius: 20px;
+    }
+    .deleteCard > button {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      background: #000;
+      color: white;
+      width: 80px;
+      height: 20px;
+      border-radius: 20px;
+    }
+    .checkButton > button {
+      font-weight: bold;
+      font-size: 15px;
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      background: rgb(13, 254, 1);
+      color: rgb(0, 0, 0);
+      width: 176px;
+      height: 50px;
+    }
+  }
+}

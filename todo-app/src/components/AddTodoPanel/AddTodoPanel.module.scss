@@ -1,0 +1,30 @@
+.addTodo {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  width: 200px;
+  height: 80px;
+  border: solid 2px black;
+  z-index: 100;
+  background: rgb(194, 178, 178);
+  .textTodo {
+    height: 25px;
+    border: 2px solid black;
+  }
+  .addTodoButton {
+    background: #000;
+    color: white;
+    width: 80px;
+    height: 20px;
+    border-radius: 20px;
+  }
+}
+
+.priority {
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+  input {
+    margin: 0px 0px 0px 10px;
+  }
+}

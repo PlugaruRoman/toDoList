@@ -1,0 +1,29 @@
+.header {
+  height: 50px;
+  border-bottom: 2px solid black;
+  display: flex;
+  align-items: center;
+  .title {
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 24px;
+    text-transform: uppercase;
+    margin-left: 20px;
+    &:after {
+      content: '';
+    }
+  }
+  .categoryName {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    margin-left: 60px;
+  }
+  .todoCount {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    margin-left: 160px;
+  }
+}

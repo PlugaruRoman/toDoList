@@ -3,5 +3,8 @@ export interface ITask {
   name: string;
   priority: number;
   checked: boolean;
-  category: string;
+}
+export interface ITodo {
+  name: string;
+  priority: number;
 }

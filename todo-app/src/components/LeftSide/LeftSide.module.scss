@@ -1,0 +1,15 @@
+.leftBar {
+  display: block;
+  width: 200px;
+  height: 548px;
+  border-right: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .addCategory {
+    background: #000;
+    color: white;
+    height: 40px;
+  }
+}

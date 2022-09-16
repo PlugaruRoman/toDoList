@@ -1,6 +1,7 @@
+import styles from './Category.module.scss';
 const CategoryCard = () => {
   return (
-    <div className='categorycard'>
+    <div className={styles.categoryCard}>
       <div>Category Card</div>
     </div>
   );

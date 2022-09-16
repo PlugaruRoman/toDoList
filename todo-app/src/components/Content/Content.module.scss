@@ -1,0 +1,14 @@
+.content {
+  display: flex;
+  .overflow {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 548px;
+  }
+  .display {
+    width: 700px;
+    border: 2px sodid black;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

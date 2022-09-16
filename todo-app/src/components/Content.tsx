@@ -6,14 +6,14 @@ import SortCard from './SortCard';
 import appContext from '../context';
 
 const Content = () => {
-  const { store }: any = useContext(appContext);
+  const { todos }: any = useContext(appContext);
   return (
     <div className='content'>
       <LeftSide />
       <div className='overflow'>
         <div className='display'>
-          {store.map((el: any) => (
-            <Card task={el} />
+          {todos.map((el: any, index: number) => (
+            <Card key={index} task={el} />
           ))}
         </div>
         <SortCard />

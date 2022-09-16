@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import appContext from '../context';
 
 const AddTodo = () => {
-  const { onChange, todo }: any = useContext(appContext);
+  const { onChange, todo, addTodo }: any = useContext(appContext);
   return (
     <div className='addtodo'>
       <div className='inputcontainer'>
@@ -13,7 +13,7 @@ const AddTodo = () => {
           type='text'
           id='name'
           onChange={onChange}
-          value={todo.value}
+          value={todo.name}
         />
         <input
           placeholder='Priority...'
@@ -25,7 +25,12 @@ const AddTodo = () => {
           value={todo.description}
         />
       </div>
-      <button className='addtodobutton'>Add Todo</button>
+      <button
+        onClick={() => addTodo({ name: todo.name, priority: todo.priority })}
+        className='addtodobutton'
+      >
+        Add Todo
+      </button>
     </div>
   );
 };

@@ -1,18 +1,29 @@
 import { ITask } from './Interface';
-const store: ITask[] = [
-  { taskName: 'buy bread', priority: 1, category: 'Important', checked: true },
+export const STORE: ITask[] = [
   {
-    taskName: 'buy meal',
+    id: 1,
+    name: 'buy bread',
+    priority: 1,
+    category: 'Important',
+    checked: true,
+  },
+  {
+    id: 2,
+    name: 'buy meal',
     priority: 2,
     category: 'Low Important',
     checked: false,
   },
   {
-    taskName: 'buy water',
+    id: 3,
+    name: 'buy water',
     priority: 3,
     category: 'Very Important',
     checked: false,
   },
 ];
 
-export default store;
+export const DEFAULT_STORE = {
+  name: '',
+  priority: '',
+};

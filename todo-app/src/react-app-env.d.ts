@@ -1,12 +1,12 @@
 /// <reference types="react-scripts" />
-type Todo = {
+type Todos = {
   id: number;
   name: string;
   priority: number;
   checked: boolean;
 };
 
-type TodoOne = {
+type Todo = {
   name: string;
   priority: number;
 };

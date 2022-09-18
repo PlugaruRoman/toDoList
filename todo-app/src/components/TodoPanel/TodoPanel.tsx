@@ -1,16 +1,10 @@
 import styles from './TodoPanel.module.scss';
+import { useTodo } from '../../utils';
 
 interface AddTodoPanelProps {
-  addTodo: ({ name, priority }: Omit<Todo, 'checked' | 'id'>) => void;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  todo: TodoOne;
   mode: 'add';
 }
 interface EditTodoPanelProps {
-  addTodo: ({ name, priority }: Omit<Todo, 'checked' | 'id'>) => void;
-  changeTodo: ({ name, priority }: Omit<Todo, 'checked' | 'id'>) => void;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  todo: TodoOne;
   mode: 'edit';
   editTodo: Omit<Todo, 'id' | 'checked'>;
 }
@@ -20,55 +14,54 @@ type TodoPanelProps = AddTodoPanelProps | EditTodoPanelProps;
 const TodoPanel: React.FC<TodoPanelProps> = (props) => {
   const isEdit = props.mode === 'edit';
 
-  const onClick = () => {
-    const todoItem = {
-      name: props.todo.name,
-      priority: props.todo.priority,
-    };
-    if (isEdit) {
-      return props.changeTodo(todoItem);
-    }
-    props.addTodo({
-      name: props.todo.name,
-      priority: props.todo.priority,
-    });
-  };
+  const { addTodo, onChange, todo, changeTodo } = useTodo();
 
+  const onClick = () => {
+    if (todo) {
+      const todoItem = {
+        name: todo.name,
+        priority: todo.priority,
+      };
+      if (isEdit) {
+        return changeTodo(todoItem);
+      }
+      addTodo(todoItem);
+    }
+  };
   return (
     <div className={styles.addTodo}>
       <div className='inputcontainer'>
         <input
-          placeholder='Task...'
           className={styles.textTodo}
           name='name'
           type='text'
           id='name'
-          onChange={props.onChange}
-          value={props.todo.name}
+          onChange={onChange}
+          value={todo ? todo.name : ''}
         />
         <div className={styles.priority}>
-          <div>Priority</div>
-          <input
-            placeholder='Priority...'
+          <select
             className={styles.textTodo}
             name='priority'
-            type='number'
-            min={1}
-            max={5}
             id='priority'
-            onChange={props.onChange}
-            value={props.todo.priority}
-          />
+            value={todo ? todo.priority : ''}
+            onChange={onChange}
+          >
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+          </select>
         </div>
       </div>
       {!isEdit && (
-        <button onClick={onClick} className={styles.addTodoButton}>
-          Add Todo
+        <button onClick={() => onClick()} className={styles.addTodoButton}>
+          ADD
         </button>
       )}
       {isEdit && (
-        <button onClick={onClick} className={styles.addTodoButton}>
-          Edit
+        <button onClick={() => onClick()} className={styles.addTodoButton}>
+          EDIT
         </button>
       )}
     </div>

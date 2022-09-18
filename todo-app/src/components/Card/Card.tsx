@@ -1,37 +1,32 @@
+import { useTodo } from '../../utils';
 import styles from './Card.module.scss';
 
 interface CardProps {
-  todo: Todo;
-  checkTodo: (id: Todo['id']) => void;
-  deleteTodo: (id: Todo['id']) => void;
-  selectTodoIdForEdit: (id: Todo['id']) => void;
+  todos: Todos;
 }
 
-const Card: React.FC<CardProps> = ({
-  todo,
-  checkTodo,
-  deleteTodo,
-  selectTodoIdForEdit,
-}) => {
+const Card: React.FC<CardProps> = ({ todos }) => {
+  const { checkTodo, deleteTodo, selectTodoIdForEdit } = useTodo();
+
   return (
     <div
       style={{
-        opacity: todo.checked ? 0.5 : 1,
-        background: todo.checked ? 'green' : 'white',
-        textDecoration: todo.checked ? 'line-through' : 'none',
+        opacity: todos.checked ? 0.5 : 1,
+        background: todos.checked ? 'green' : 'white',
+        textDecoration: todos.checked ? 'line-through' : 'none',
       }}
       className={styles.card}
     >
       <div className={styles.cardItem}>
-        <div className='cardname'>Task: {todo.name}</div>
-        <div className='priority'>Priority: {todo.priority}</div>
+        <div className='cardname'>Task: {todos.name}</div>
+        <div className='priority'>Priority: {todos.priority}</div>
         <div className='checked'>
-          Checked: {todo.checked ? 'yes' : 'not Checked'}
+          Checked: {todos.checked ? 'yes' : 'not Checked'}
         </div>
         <div className={styles.cardItemButtons}>
           <div className={styles.editCard}>
             <button
-              onClick={() => selectTodoIdForEdit(todo.id)}
+              onClick={() => selectTodoIdForEdit(todos.id)}
               className={styles.edit}
             >
               EDIT
@@ -39,14 +34,14 @@ const Card: React.FC<CardProps> = ({
           </div>
           <div className={styles.deleteCard}>
             <button
-              onClick={() => deleteTodo(todo.id)}
+              onClick={() => deleteTodo(todos.id)}
               className={styles.delete}
             >
               DELETE
             </button>
           </div>
           <div className={styles.checkButton}>
-            <button onClick={() => checkTodo(todo.id)}>DONE</button>
+            <button onClick={() => checkTodo(todos.id)}>DONE</button>
           </div>
         </div>
       </div>

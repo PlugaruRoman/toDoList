@@ -1,13 +1,22 @@
-import CategoryCard from '../CategoryCard/CategoryCard';
 import styles from './LeftSide.module.scss';
 import { useTodo } from '../../utils';
+
 const LeftSide: React.FC = () => {
-  const { category } = useTodo();
+  const { category, selectedCategory, setSelectedCategory } = useTodo();
+
+  const onClickCategory = (i: number) => {};
+
   return (
     <div className={styles.leftBar}>
       <div className={styles.categoryList}>
         {category.map((el, i) => (
-          <CategoryCard title={el.title} key={i} />
+          <div
+            onClick={() => onClickCategory(i)}
+            key={i}
+            className={styles.active}
+          >
+            <div>{el.title}</div>
+          </div>
         ))}
       </div>
       <button className={styles.addCategory}>Add Button</button>

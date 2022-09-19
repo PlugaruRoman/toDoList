@@ -13,3 +13,32 @@
     height: 40px;
   }
 }
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85px;
+  border-bottom: 2px solid black;
+  background: rgb(88, 75, 0);
+  cursor: pointer;
+  &:hover {
+    background: rgb(255, 217, 0);
+  }
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+}
+.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85px;
+  border-bottom: 2px solid black;
+  background: rgb(88, 75, 0);
+  cursor: pointer;
+  &:hover {
+    background: rgb(255, 217, 0);
+  }
+  font-size: 30px;
+  color: rgb(255, 0, 0);
+}

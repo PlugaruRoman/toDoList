@@ -44,6 +44,8 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   const [todoIdForEdIT, setTodoIdForEdit] = React.useState<Todos['id'] | null>(
     null
   );
+  const [selectedCategory, setSelectedCategory] =
+    React.useState<Category | null>(null);
   const [selected, setSelected] = React.useState<number>(0);
   //eslint-disable-next-line
   const onChange = (
@@ -115,6 +117,8 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       setSelected,
       selected,
       category,
+      selectedCategory,
+      setSelectedCategory,
     }),
     [
       todos,
@@ -129,6 +133,8 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       setSelected,
       selected,
       category,
+      selectedCategory,
+      setSelectedCategory,
     ]
   );
 

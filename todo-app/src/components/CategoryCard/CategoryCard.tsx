@@ -1,8 +1,14 @@
 import styles from './Category.module.scss';
-const CategoryCard = () => {
+
+interface CategoryCardProps {
+  title: string;
+}
+const CategoryCard: React.FC<CategoryCardProps> = (props) => {
   return (
     <div className={styles.categoryCard}>
-      <div>Category Card</div>
+      <div>
+        <div className='title'>{props.title}</div>
+      </div>
     </div>
   );
 };

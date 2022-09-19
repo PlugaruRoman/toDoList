@@ -1,3 +1,4 @@
+import React from 'react';
 import LeftSide from '../LeftSide/LeftSide';
 import Card from '../Card/Card';
 import styles from './Content.module.scss';
@@ -13,6 +14,7 @@ const Content: React.FC = () => {
       <div className={styles.overflow}>
         <div className={styles.display}>
           {selected === 0 &&
+            todos &&
             todos.map((todo) => {
               if (todo.id === todoIdForEdIT)
                 return (
@@ -25,6 +27,7 @@ const Content: React.FC = () => {
               return <Card todos={todo} key={todo.id} />;
             })}
           {selected === 1 &&
+            todos &&
             todos
               .sort((a, b) => a.priority - b.priority)
               .map((todo) => {
@@ -39,6 +42,7 @@ const Content: React.FC = () => {
                 return <Card todos={todo} key={todo.id} />;
               })}
           {selected === 2 &&
+            todos &&
             todos
               .sort((a, b) => a.priority - b.priority)
               .map((todo) => {

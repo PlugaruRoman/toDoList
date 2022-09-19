@@ -1,30 +1,36 @@
 import React from 'react';
 import { TodoContext } from './TodoContext';
 
-export const STORE: Todos[] = [
+export const STORE: Todos[] = [];
+export const CATEGORY_STORE: Category[] = [
   {
-    id: 1,
-    name: 'buy bread',
-    priority: 5,
-    checked: false,
-  },
-  {
-    id: 2,
-    name: 'buy meal',
-    priority: 2,
-    checked: false,
+    id: 4,
+    title: 'Not important',
   },
   {
     id: 3,
-    name: 'buy water',
-    priority: 4,
-    checked: false,
+    title: 'Little important',
+  },
+  {
+    id: 2,
+    title: 'Important',
+  },
+  {
+    id: 1,
+    title: 'Very important',
+  },
+  {
+    id: 5,
+    title: 'Completed',
+  },
+  {
+    id: 5,
+    title: 'Uncompleted',
   },
 ];
-
 export const DEFAULT_STORE: Todo = {
   name: '',
-  priority: Number(''),
+  priority: 1,
 };
 
 interface TodoProviderProps {
@@ -34,11 +40,12 @@ interface TodoProviderProps {
 export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   const [todo, setTodo] = React.useState(DEFAULT_STORE);
   const [todos, setTodos] = React.useState(STORE);
+  const [category, setCategory] = React.useState(CATEGORY_STORE);
   const [todoIdForEdIT, setTodoIdForEdit] = React.useState<Todos['id'] | null>(
     null
   );
   const [selected, setSelected] = React.useState<number>(0);
-
+  //eslint-disable-next-line
   const onChange = (
     event:
       | React.ChangeEvent<HTMLInputElement>
@@ -47,12 +54,12 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
     const { name, value } = event.target;
     setTodo({ ...todo, [name]: value });
   };
-
+  //eslint-disable-next-line
   const addTodo = ({ name, priority }: Omit<Todos, 'checked' | 'id'>) => {
     setTodos([
       ...todos,
       {
-        id: todos[todos.length - 1].id + 1,
+        id: Date.now(),
         name,
         priority,
         checked: false,
@@ -61,6 +68,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
     setTodo(DEFAULT_STORE);
   };
 
+  //eslint-disable-next-line
   const checkTodo = (id: Todos['id']) => {
     setTodos(
       todos.map((todo) => {
@@ -71,15 +79,15 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       })
     );
   };
-
+  //eslint-disable-next-line
   const deleteTodo = (id: Todos['id']) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
-
+  //eslint-disable-next-line
   const selectTodoIdForEdit = (id: Todos['id']) => {
     setTodoIdForEdit(id);
   };
-
+  //eslint-disable-next-line
   const changeTodo = ({ name, priority }: Omit<Todos, 'checked' | 'id'>) => {
     setTodos(
       todos.map((todo) => {
@@ -89,7 +97,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
         return todo;
       })
     );
-
+    setTodo(DEFAULT_STORE);
     setTodoIdForEdit(null);
   };
 
@@ -106,6 +114,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       changeTodo,
       setSelected,
       selected,
+      category,
     }),
     [
       todos,
@@ -119,6 +128,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       changeTodo,
       setSelected,
       selected,
+      category,
     ]
   );
 

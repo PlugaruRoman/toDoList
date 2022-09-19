@@ -8,7 +8,9 @@ const Header: React.FC = () => {
     <div className={styles.header}>
       <h1 className={styles.title}>Todo-App</h1>
       <h2 className={styles.categoryName}>Category Name</h2>
-      <div className={styles.todoCount}>Todo List: {todos.length} task's</div>
+      <div className={styles.todoCount}>
+        Todo List: {todos && todos.length} task's
+      </div>
       <SortCard />
     </div>
   );

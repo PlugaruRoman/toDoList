@@ -31,6 +31,8 @@ const Card: React.FC<CardProps> = ({ todos }) => {
             >
               EDIT
             </button>
+            <div>added at:</div>
+            <div>Edit at:</div>
           </div>
           <div className={styles.deleteCard}>
             <button

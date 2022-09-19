@@ -20,6 +20,9 @@
       width: 80px;
       height: 20px;
       border-radius: 20px;
+      &:hover {
+        background: rgb(255, 248, 174);
+      }
     }
     .deleteCard > button {
       position: absolute;
@@ -30,6 +33,9 @@
       width: 80px;
       height: 20px;
       border-radius: 20px;
+      &:hover {
+        background: rgb(104, 101, 101);
+      }
     }
     .checkButton > button {
       font-weight: bold;
@@ -41,6 +47,9 @@
       color: rgb(0, 0, 0);
       width: 176px;
       height: 50px;
+      &:hover {
+        background: rgb(150, 255, 144);
+      }
     }
   }
 }

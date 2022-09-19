@@ -33,6 +33,7 @@ const TodoPanel: React.FC<TodoPanelProps> = (props) => {
       <div className='inputcontainer'>
         <input
           className={styles.textTodo}
+          placeholder='Task...'
           name='name'
           type='text'
           id='name'
@@ -40,18 +41,21 @@ const TodoPanel: React.FC<TodoPanelProps> = (props) => {
           value={todo ? todo.name : ''}
         />
         <div className={styles.priority}>
-          <select
-            className={styles.textTodo}
-            name='priority'
-            id='priority'
-            value={todo ? todo.priority : ''}
-            onChange={onChange}
-          >
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-          </select>
+          <label htmlFor='priority'>
+            priority:
+            <select
+              className={styles.textTodo}
+              name='priority'
+              id='priority'
+              value={todo ? todo.priority : ''}
+              onChange={onChange}
+            >
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+            </select>
+          </label>
         </div>
       </div>
       {!isEdit && (

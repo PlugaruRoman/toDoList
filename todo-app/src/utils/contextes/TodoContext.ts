@@ -14,6 +14,8 @@ export interface TodoContextProps {
   ) => void;
   todo: Todo | null;
   changeTodo: ({ name, priority }: Omit<Todo, 'checked' | 'id'>) => void;
+  selected: number;
+  setSelected: (id: Todos['id']) => void;
 }
 
 export const TodoContext = React.createContext<TodoContextProps>({
@@ -26,4 +28,6 @@ export const TodoContext = React.createContext<TodoContextProps>({
   onChange: () => {},
   todo: null,
   changeTodo: () => {},
+  selected: 0,
+  setSelected: () => {},
 });

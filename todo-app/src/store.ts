@@ -2,13 +2,13 @@ export const STORE: Todos[] = [
   {
     id: 1,
     name: 'buy bread',
-    priority: 1,
+    priority: 3,
     checked: false,
   },
   {
     id: 2,
     name: 'buy meal',
-    priority: 2,
+    priority: 5,
     checked: false,
   },
   {

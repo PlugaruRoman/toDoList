@@ -5,7 +5,7 @@ export const STORE: Todos[] = [
   {
     id: 1,
     name: 'buy bread',
-    priority: 1,
+    priority: 5,
     checked: false,
   },
   {
@@ -17,7 +17,7 @@ export const STORE: Todos[] = [
   {
     id: 3,
     name: 'buy water',
-    priority: 3,
+    priority: 4,
     checked: false,
   },
 ];
@@ -37,6 +37,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   const [todoIdForEdIT, setTodoIdForEdit] = React.useState<Todos['id'] | null>(
     null
   );
+  const [selected, setSelected] = React.useState<number>(0);
 
   const onChange = (
     event:
@@ -103,6 +104,8 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       onChange,
       todo,
       changeTodo,
+      setSelected,
+      selected,
     }),
     [
       todos,
@@ -114,6 +117,8 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       onChange,
       todo,
       changeTodo,
+      setSelected,
+      selected,
     ]
   );
 

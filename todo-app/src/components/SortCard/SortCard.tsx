@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './SortCard.module.scss';
+import { useTodo } from '../../utils';
 
 const SortCard = () => {
   const [open, setOpen] = React.useState<boolean>(false);
-  const [selected, setSelected] = React.useState<number>(0);
   const list: string[] = ['priority', 'asc priority', 'desc priority'];
+
+  const { setSelected, selected } = useTodo();
 
   const onClickList = (i: number) => {
     setSelected(i);

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './SortCard.module.scss';
 import { useTodo } from '../../utils';
 
-const SortCard = () => {
+const SortCard: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   const list: string[] = ['priority', 'asc priority', 'desc priority'];
 

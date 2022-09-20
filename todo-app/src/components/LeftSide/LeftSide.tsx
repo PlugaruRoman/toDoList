@@ -1,6 +1,6 @@
 import styles from './LeftSide.module.scss';
 import { useTodo } from '../../utils';
-import { CATEGORY_STORE } from '../../utils/contextes/TodoProvider';
+import { CATEGORY_STORE } from '../../store';
 
 const LeftSide: React.FC = () => {
   const { selectedCategory, setSelectedCategory } = useTodo();

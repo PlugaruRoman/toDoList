@@ -4,6 +4,7 @@ import { useTodo } from '../../utils';
 
 const Header: React.FC = () => {
   const { todos, selectedCategory } = useTodo();
+
   const list: string[] = [
     'All',
     'Not important',

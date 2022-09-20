@@ -27,6 +27,7 @@ const Content: React.FC = () => {
                 );
               return <Card todos={todo} key={todo.id} />;
             })}
+
           {selected === 1 &&
             selectedCategory === 0 &&
             todos &&
@@ -43,6 +44,7 @@ const Content: React.FC = () => {
                   );
                 return <Card todos={todo} key={todo.id} />;
               })}
+
           {selected === 2 &&
             selectedCategory === 0 &&
             todos &&
@@ -60,7 +62,9 @@ const Content: React.FC = () => {
                 return <Card todos={todo} key={todo.id} />;
               })
               .reverse()}
-          {/*category1*/}
+
+          {/*category Not Important*/}
+
           {selectedCategory === 1 &&
             todos &&
             todos
@@ -76,7 +80,8 @@ const Content: React.FC = () => {
                   );
                 return <Card todos={todo} key={todo.id} />;
               })}
-          {/*category2*/}
+          {/*category Little Important*/}
+
           {selectedCategory === 2 &&
             todos &&
             todos
@@ -92,7 +97,9 @@ const Content: React.FC = () => {
                   );
                 return <Card todos={todo} key={todo.id} />;
               })}
-          {/*category3*/}
+
+          {/*category Important*/}
+
           {selectedCategory === 3 &&
             todos &&
             todos
@@ -108,7 +115,9 @@ const Content: React.FC = () => {
                   );
                 return <Card todos={todo} key={todo.id} />;
               })}
-          {/*category4*/}
+
+          {/*category Very Important*/}
+
           {selectedCategory === 4 &&
             todos &&
             todos
@@ -124,7 +133,9 @@ const Content: React.FC = () => {
                   );
                 return <Card todos={todo} key={todo.id} />;
               })}
-          {/*category5*/}
+
+          {/*category Completed*/}
+
           {selected === 0 &&
             selectedCategory === 5 &&
             todos &&
@@ -141,6 +152,7 @@ const Content: React.FC = () => {
                   );
                 return <Card todos={todo} key={todo.id} />;
               })}
+
           {selected === 1 &&
             selectedCategory === 5 &&
             todos &&
@@ -158,6 +170,7 @@ const Content: React.FC = () => {
                   );
                 return <Card todos={todo} key={todo.id} />;
               })}
+
           {selected === 2 &&
             selectedCategory === 5 &&
             todos &&
@@ -176,7 +189,9 @@ const Content: React.FC = () => {
                 return <Card todos={todo} key={todo.id} />;
               })
               .reverse()}
-          {/*category6*/}
+
+          {/*category Uncompleted */}
+
           {selected === 0 &&
             selectedCategory === 6 &&
             todos &&
@@ -193,6 +208,7 @@ const Content: React.FC = () => {
                   );
                 return <Card todos={todo} key={todo.id} />;
               })}
+
           {selected === 1 &&
             selectedCategory === 6 &&
             todos &&
@@ -210,6 +226,7 @@ const Content: React.FC = () => {
                   );
                 return <Card todos={todo} key={todo.id} />;
               })}
+
           {selected === 2 &&
             selectedCategory === 6 &&
             todos &&

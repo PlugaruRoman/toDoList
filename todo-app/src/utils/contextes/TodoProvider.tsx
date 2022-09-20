@@ -2,6 +2,7 @@ import React from 'react';
 import { TodoContext } from './TodoContext';
 
 export const STORE: Todos[] = [];
+
 export const CATEGORY_STORE: Category[] = [
   {
     id: 7,
@@ -72,7 +73,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
         checked: false,
       },
     ]);
-    console.log(todos);
+
     setTodo(DEFAULT_STORE);
   };
 

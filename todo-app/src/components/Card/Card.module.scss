@@ -1,12 +1,24 @@
 .card {
   display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 25px;
   width: 180px;
   height: 200px;
   border: 2px solid black;
   position: relative;
+  .priority {
+    position: absolute;
+    top: 25px;
+    right: 10px;
+  }
+  .cardName {
+    position: absolute;
+    top: 45px;
+  }
+  .addedAt {
+    position: absolute;
+    bottom: 60px;
+    left: 10px;
+  }
 
   .cardItemButtons {
     display: flex;

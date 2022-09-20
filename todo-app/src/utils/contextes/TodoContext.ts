@@ -16,9 +16,10 @@ export interface TodoContextProps {
   changeTodo: ({ name, priority }: Omit<Todo, 'checked' | 'id'>) => void;
   selected: number;
   setSelected: (id: Todos['id']) => void;
-  category: Category[];
-  selectedCategory: Category | null;
-  setSelectedCategory: (id: Category) => void;
+  category: string | null;
+  setCategory: (id: Category['title']) => void;
+  selectedCategory: number;
+  setSelectedCategory: (id: Category['id']) => void;
 }
 
 export const TodoContext = React.createContext<TodoContextProps>({
@@ -33,7 +34,8 @@ export const TodoContext = React.createContext<TodoContextProps>({
   changeTodo: () => {},
   selected: 0,
   setSelected: () => {},
-  category: [],
-  selectedCategory: null,
+  category: null,
+  setCategory: () => {},
+  selectedCategory: 0,
   setSelectedCategory: () => {},
 });

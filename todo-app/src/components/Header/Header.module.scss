@@ -18,12 +18,20 @@
     font-size: 20px;
     line-height: 24px;
     text-transform: uppercase;
-    margin-left: 60px;
+    margin-left: 30px;
+    span {
+      color: red;
+    }
   }
   .todoCount {
+    position: absolute;
+    top: 12px;
+    right: 150px;
     font-weight: bold;
     font-size: 20px;
     line-height: 24px;
-    margin-left: 160px;
+    b {
+      color: red;
+    }
   }
 }

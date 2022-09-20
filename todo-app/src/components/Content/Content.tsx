@@ -6,7 +6,7 @@ import TodoPanel from '../TodoPanel/TodoPanel';
 import { useTodo } from '../../utils';
 
 const Content: React.FC = () => {
-  const { todos, todoIdForEdIT, selected } = useTodo();
+  const { todos, todoIdForEdIT, selected, selectedCategory } = useTodo();
 
   return (
     <div className={styles.content}>
@@ -14,6 +14,7 @@ const Content: React.FC = () => {
       <div className={styles.overflow}>
         <div className={styles.display}>
           {selected === 0 &&
+            selectedCategory === 0 &&
             todos &&
             todos.map((todo) => {
               if (todo.id === todoIdForEdIT)

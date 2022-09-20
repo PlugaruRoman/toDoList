@@ -74,6 +74,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
         checked: false,
       },
     ]);
+    console.log(todos);
     setTodo(DEFAULT_STORE);
   };
 

@@ -50,7 +50,7 @@ const TodoPanel: React.FC<TodoPanelProps> = (props) => {
               className={styles.textTodo}
               name='priority'
               id='priority'
-              value={todo ? todo.priority : ''}
+              value={todo ? todo.priority : 0}
               onChange={onChange}
             >
               <option value='1'>1</option>

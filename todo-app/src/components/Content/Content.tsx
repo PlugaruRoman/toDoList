@@ -28,6 +28,7 @@ const Content: React.FC = () => {
               return <Card todos={todo} key={todo.id} />;
             })}
           {selected === 1 &&
+            selectedCategory === 0 &&
             todos &&
             todos
               .sort((a, b) => a.priority - b.priority)
@@ -43,8 +44,177 @@ const Content: React.FC = () => {
                 return <Card todos={todo} key={todo.id} />;
               })}
           {selected === 2 &&
+            selectedCategory === 0 &&
             todos &&
             todos
+              .sort((a, b) => a.priority - b.priority)
+              .map((todo) => {
+                if (todo.id === todoIdForEdIT)
+                  return (
+                    <TodoPanel
+                      mode='edit'
+                      key={todo.id}
+                      editTodo={{ name: todo.name, priority: todo.priority }}
+                    />
+                  );
+                return <Card todos={todo} key={todo.id} />;
+              })
+              .reverse()}
+          {/*category1*/}
+          {selectedCategory === 1 &&
+            todos &&
+            todos
+              .filter((item) => item.priority === 4)
+              .map((todo) => {
+                if (todo.id === todoIdForEdIT)
+                  return (
+                    <TodoPanel
+                      mode='edit'
+                      key={todo.id}
+                      editTodo={{ name: todo.name, priority: todo.priority }}
+                    />
+                  );
+                return <Card todos={todo} key={todo.id} />;
+              })}
+          {/*category2*/}
+          {selectedCategory === 2 &&
+            todos &&
+            todos
+              .filter((item) => item.priority === 3)
+              .map((todo) => {
+                if (todo.id === todoIdForEdIT)
+                  return (
+                    <TodoPanel
+                      mode='edit'
+                      key={todo.id}
+                      editTodo={{ name: todo.name, priority: todo.priority }}
+                    />
+                  );
+                return <Card todos={todo} key={todo.id} />;
+              })}
+          {/*category3*/}
+          {selectedCategory === 3 &&
+            todos &&
+            todos
+              .filter((item) => item.priority === 2)
+              .map((todo) => {
+                if (todo.id === todoIdForEdIT)
+                  return (
+                    <TodoPanel
+                      mode='edit'
+                      key={todo.id}
+                      editTodo={{ name: todo.name, priority: todo.priority }}
+                    />
+                  );
+                return <Card todos={todo} key={todo.id} />;
+              })}
+          {/*category4*/}
+          {selectedCategory === 4 &&
+            todos &&
+            todos
+              .filter((item) => item.priority === 1)
+              .map((todo) => {
+                if (todo.id === todoIdForEdIT)
+                  return (
+                    <TodoPanel
+                      mode='edit'
+                      key={todo.id}
+                      editTodo={{ name: todo.name, priority: todo.priority }}
+                    />
+                  );
+                return <Card todos={todo} key={todo.id} />;
+              })}
+          {/*category5*/}
+          {selected === 0 &&
+            selectedCategory === 5 &&
+            todos &&
+            todos
+              .filter((item) => item.checked === true)
+              .map((todo) => {
+                if (todo.id === todoIdForEdIT)
+                  return (
+                    <TodoPanel
+                      mode='edit'
+                      key={todo.id}
+                      editTodo={{ name: todo.name, priority: todo.priority }}
+                    />
+                  );
+                return <Card todos={todo} key={todo.id} />;
+              })}
+          {selected === 1 &&
+            selectedCategory === 5 &&
+            todos &&
+            todos
+              .filter((item) => item.checked === true)
+              .sort((a, b) => a.priority - b.priority)
+              .map((todo) => {
+                if (todo.id === todoIdForEdIT)
+                  return (
+                    <TodoPanel
+                      mode='edit'
+                      key={todo.id}
+                      editTodo={{ name: todo.name, priority: todo.priority }}
+                    />
+                  );
+                return <Card todos={todo} key={todo.id} />;
+              })}
+          {selected === 2 &&
+            selectedCategory === 5 &&
+            todos &&
+            todos
+              .filter((item) => item.checked === true)
+              .sort((a, b) => a.priority - b.priority)
+              .map((todo) => {
+                if (todo.id === todoIdForEdIT)
+                  return (
+                    <TodoPanel
+                      mode='edit'
+                      key={todo.id}
+                      editTodo={{ name: todo.name, priority: todo.priority }}
+                    />
+                  );
+                return <Card todos={todo} key={todo.id} />;
+              })
+              .reverse()}
+          {/*category6*/}
+          {selected === 0 &&
+            selectedCategory === 6 &&
+            todos &&
+            todos
+              .filter((item) => item.checked === false)
+              .map((todo) => {
+                if (todo.id === todoIdForEdIT)
+                  return (
+                    <TodoPanel
+                      mode='edit'
+                      key={todo.id}
+                      editTodo={{ name: todo.name, priority: todo.priority }}
+                    />
+                  );
+                return <Card todos={todo} key={todo.id} />;
+              })}
+          {selected === 1 &&
+            selectedCategory === 6 &&
+            todos &&
+            todos
+              .filter((item) => item.checked === false)
+              .sort((a, b) => a.priority - b.priority)
+              .map((todo) => {
+                if (todo.id === todoIdForEdIT)
+                  return (
+                    <TodoPanel
+                      mode='edit'
+                      key={todo.id}
+                      editTodo={{ name: todo.name, priority: todo.priority }}
+                    />
+                  );
+                return <Card todos={todo} key={todo.id} />;
+              })}
+          {selected === 2 &&
+            selectedCategory === 6 &&
+            todos &&
+            todos
+              .filter((item) => item.checked === false)
               .sort((a, b) => a.priority - b.priority)
               .map((todo) => {
                 if (todo.id === todoIdForEdIT)

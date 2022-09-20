@@ -7,9 +7,14 @@
   width: 140px;
   height: 20px;
   z-index: 100;
-
+  border-top: 2px solid black;
+  border-left: 2px solid black;
   .sort {
+    padding-bottom: 4px;
+
     cursor: pointer;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
     background: rgb(255, 234, 0);
     span {
       color: red;

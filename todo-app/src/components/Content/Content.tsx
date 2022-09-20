@@ -31,7 +31,7 @@ const Content: React.FC = () => {
             selectedCategory === 0 &&
             todos &&
             todos
-              .sort((a, b) => a.priority - b.priority)
+              .sort((a, b) => +a.priority - +b.priority)
               .map((todo) => {
                 if (todo.id === todoIdForEdIT)
                   return (
@@ -47,7 +47,7 @@ const Content: React.FC = () => {
             selectedCategory === 0 &&
             todos &&
             todos
-              .sort((a, b) => a.priority - b.priority)
+              .sort((a, b) => +a.priority - +b.priority)
               .map((todo) => {
                 if (todo.id === todoIdForEdIT)
                   return (
@@ -64,7 +64,7 @@ const Content: React.FC = () => {
           {selectedCategory === 1 &&
             todos &&
             todos
-              .filter((item) => item.priority === 4)
+              .filter((item) => item.priority === '1')
               .map((todo) => {
                 if (todo.id === todoIdForEdIT)
                   return (
@@ -80,7 +80,7 @@ const Content: React.FC = () => {
           {selectedCategory === 2 &&
             todos &&
             todos
-              .filter((item) => item.priority === 3)
+              .filter((item) => item.priority === '2')
               .map((todo) => {
                 if (todo.id === todoIdForEdIT)
                   return (
@@ -96,7 +96,7 @@ const Content: React.FC = () => {
           {selectedCategory === 3 &&
             todos &&
             todos
-              .filter((item) => item.priority === 2)
+              .filter((item) => item.priority === '3')
               .map((todo) => {
                 if (todo.id === todoIdForEdIT)
                   return (
@@ -112,7 +112,7 @@ const Content: React.FC = () => {
           {selectedCategory === 4 &&
             todos &&
             todos
-              .filter((item) => item.priority === 1)
+              .filter((item) => item.priority === '4')
               .map((todo) => {
                 if (todo.id === todoIdForEdIT)
                   return (
@@ -146,7 +146,7 @@ const Content: React.FC = () => {
             todos &&
             todos
               .filter((item) => item.checked === true)
-              .sort((a, b) => a.priority - b.priority)
+              .sort((a, b) => +a.priority - +b.priority)
               .map((todo) => {
                 if (todo.id === todoIdForEdIT)
                   return (
@@ -163,7 +163,7 @@ const Content: React.FC = () => {
             todos &&
             todos
               .filter((item) => item.checked === true)
-              .sort((a, b) => a.priority - b.priority)
+              .sort((a, b) => +a.priority - +b.priority)
               .map((todo) => {
                 if (todo.id === todoIdForEdIT)
                   return (
@@ -198,7 +198,7 @@ const Content: React.FC = () => {
             todos &&
             todos
               .filter((item) => item.checked === false)
-              .sort((a, b) => a.priority - b.priority)
+              .sort((a, b) => +a.priority - +b.priority)
               .map((todo) => {
                 if (todo.id === todoIdForEdIT)
                   return (
@@ -215,7 +215,7 @@ const Content: React.FC = () => {
             todos &&
             todos
               .filter((item) => item.checked === false)
-              .sort((a, b) => a.priority - b.priority)
+              .sort((a, b) => +a.priority - +b.priority)
               .map((todo) => {
                 if (todo.id === todoIdForEdIT)
                   return (

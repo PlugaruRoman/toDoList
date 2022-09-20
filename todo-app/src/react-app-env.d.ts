@@ -2,13 +2,13 @@
 type Todos = {
   id: number;
   name: string;
-  priority: number;
+  priority: string;
   checked: boolean;
 };
 
 type Todo = {
   name: string;
-  priority: number;
+  priority: string;
 };
 
 type Category = {

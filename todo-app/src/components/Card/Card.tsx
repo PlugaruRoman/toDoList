@@ -18,8 +18,8 @@ const Card: React.FC<CardProps> = ({ todos }) => {
       className={styles.card}
     >
       <div className={styles.cardItem}>
-        <div className='cardname'>Task: {todos.name}</div>
-        <div className='priority'>Priority: {todos.priority}</div>
+        <div className={styles.cardName}>Task: {todos.name}</div>
+        <div className={styles.priority}>Priority: {todos.priority}</div>
         <div className='checked'>
           Checked: {todos.checked ? 'yes' : 'not Checked'}
         </div>

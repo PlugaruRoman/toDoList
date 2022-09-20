@@ -8,19 +8,19 @@ export const CATEGORY_STORE: Category[] = [
     title: 'All',
   },
   {
-    id: 4,
+    id: 1,
     title: 'Not important',
   },
   {
-    id: 3,
+    id: 2,
     title: 'Little important',
   },
   {
-    id: 2,
+    id: 3,
     title: 'Important',
   },
   {
-    id: 1,
+    id: 4,
     title: 'Very important',
   },
   {
@@ -34,7 +34,7 @@ export const CATEGORY_STORE: Category[] = [
 ];
 export const DEFAULT_STORE: Todo = {
   name: '',
-  priority: 1,
+  priority: '1',
 };
 
 interface TodoProviderProps {
@@ -44,9 +44,7 @@ interface TodoProviderProps {
 export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   const [todo, setTodo] = React.useState(DEFAULT_STORE);
   const [todos, setTodos] = React.useState(STORE);
-  const [category, setCategory] = React.useState<Category['title'] | null>(
-    null
-  );
+
   const [todoIdForEdIT, setTodoIdForEdit] = React.useState<Todos['id'] | null>(
     null
   );
@@ -127,8 +125,6 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       changeTodo,
       setSelected,
       selected,
-      category,
-      setCategory,
       selectedCategory,
       setSelectedCategory,
     }),
@@ -144,8 +140,6 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       changeTodo,
       setSelected,
       selected,
-      category,
-      setCategory,
       selectedCategory,
       setSelectedCategory,
     ]

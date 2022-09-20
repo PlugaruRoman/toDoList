@@ -53,10 +53,10 @@ const TodoPanel: React.FC<TodoPanelProps> = (props) => {
               value={todo ? todo.priority : 0}
               onChange={onChange}
             >
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
+              <option value='1'>Not important</option>
+              <option value='2'>Little important</option>
+              <option value='3'>Important</option>
+              <option value='4'>Very important</option>
             </select>
           </label>
         </div>

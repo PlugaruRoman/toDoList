@@ -1,8 +1,6 @@
 import React from 'react';
 import { TodoContext } from './TodoContext';
 
-export const STORE: Todos[] = [];
-
 export const CATEGORY_STORE: Category[] = [
   {
     id: 7,
@@ -42,10 +40,18 @@ interface TodoProviderProps {
   children: React.ReactNode;
 }
 
+const getLocalItems = (): Todos[] => {
+  let store = localStorage.getItem('store') || '[]';
+  if (store) {
+    return JSON.parse(localStorage.getItem('store') || '[]');
+  } else {
+    return [];
+  }
+};
+
 export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   const [todo, setTodo] = React.useState(DEFAULT_STORE);
-  const [todos, setTodos] = React.useState(STORE);
-
+  const [todos, setTodos] = React.useState(getLocalItems());
   const [todoIdForEdIT, setTodoIdForEdit] = React.useState<Todos['id'] | null>(
     null
   );
@@ -64,16 +70,17 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
 
   //eslint-disable-next-line
   const addTodo = ({ name, priority }: Omit<Todos, 'checked' | 'id'>) => {
-    setTodos([
-      ...todos,
-      {
-        id: Date.now(),
-        name,
-        priority,
-        checked: false,
-      },
-    ]);
-
+    if (todos) {
+      setTodos([
+        ...todos,
+        {
+          id: Date.now(),
+          name,
+          priority,
+          checked: false,
+        },
+      ]);
+    }
     setTodo(DEFAULT_STORE);
   };
 
@@ -112,6 +119,11 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
     setTodo(DEFAULT_STORE);
     setTodoIdForEdit(null);
   };
+
+  React.useEffect(() => {
+    localStorage.setItem('store', JSON.stringify(todos));
+    return () => {};
+  }, [todos]);
 
   const value = React.useMemo(
     () => ({

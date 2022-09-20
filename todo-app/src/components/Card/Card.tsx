@@ -21,7 +21,9 @@ const Card: React.FC<CardProps> = ({ todos }) => {
       className={styles.card}
     >
       <div className={styles.cardItem}>
-        <div className={styles.cardName}>Task: {todos.name}</div>
+        <div className={todos.checked ? styles.cardNameDone : styles.cardName}>
+          Task: {todos.name}
+        </div>
         <div className={styles.priority}>Priority: {todos.priority}</div>
         <div className={styles.cardItemButtons}>
           <div className={styles.editCard}>

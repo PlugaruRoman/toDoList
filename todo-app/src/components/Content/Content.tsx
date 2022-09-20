@@ -80,6 +80,7 @@ const Content: React.FC = () => {
                   );
                 return <Card todos={todo} key={todo.id} />;
               })}
+
           {/*category Little Important*/}
 
           {selectedCategory === 2 &&

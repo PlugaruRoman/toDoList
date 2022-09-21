@@ -1,25 +1,17 @@
-import SortCard from '../SortCard/SortCard';
-import styles from './Header.module.scss';
 import { useTodo } from '../../utils';
+
+import SortCard from '../SortCard/SortCard';
+
+import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
   const { todos, selectedCategory } = useTodo();
-
-  const list: string[] = [
-    'All',
-    'Not important',
-    'Little important',
-    'Important',
-    'Very important',
-    'Completed',
-    'Uncompleted',
-  ];
 
   return (
     <div className={styles.header}>
       <h1 className={styles.title}>Todo-App</h1>
       <h2 className={styles.categoryName}>
-        Category Name: <span>{list[selectedCategory]}</span>
+        Category Name: <span>{selectedCategory}</span>
       </h2>
       <div className={styles.todoCount}>
         <span>

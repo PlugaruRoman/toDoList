@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { TodoContext } from './TodoContext';
+
 import { DEFAULT_STORE } from '../../store';
 
 const getLocalItems = (): Todos[] => {
@@ -21,8 +23,8 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   const [todoIdForEdIT, setTodoIdForEdit] = React.useState<Todos['id'] | null>(
     null
   );
-  const [selectedCategory, setSelectedCategory] = React.useState<number>(0);
-  const [selected, setSelected] = React.useState<number>(0);
+  const [selectedCategory, setSelectedCategory] = React.useState<string>('All');
+  const [selectedPriority, setSelectedPriority] = React.useState<string>('');
 
   //eslint-disable-next-line
   const onChange = (
@@ -87,6 +89,14 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   };
 
   React.useEffect(() => {
+    if (selectedPriority === '1') {
+      todos.sort((a, b) => +a.priority - +b.priority);
+    } else {
+      todos.sort((a, b) => +b.priority - +a.priority);
+    }
+  }, [selectedPriority, todos]);
+
+  React.useEffect(() => {
     localStorage.setItem('store', JSON.stringify(todos));
     return () => {};
   }, [todos]);
@@ -102,8 +112,8 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       onChange,
       todo,
       changeTodo,
-      setSelected,
-      selected,
+      setSelectedPriority,
+      selectedPriority,
       selectedCategory,
       setSelectedCategory,
     }),
@@ -117,8 +127,8 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       onChange,
       todo,
       changeTodo,
-      setSelected,
-      selected,
+      setSelectedPriority,
+      selectedPriority,
       selectedCategory,
       setSelectedCategory,
     ]

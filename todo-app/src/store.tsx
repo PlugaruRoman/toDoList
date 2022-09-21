@@ -1,33 +1,23 @@
-export const CATEGORY_STORE: Category[] = [
-  {
-    id: 7,
-    title: 'All',
-  },
-  {
-    id: 1,
-    title: 'Not important',
-  },
-  {
-    id: 2,
-    title: 'Little important',
-  },
-  {
-    id: 3,
-    title: 'Important',
-  },
-  {
-    id: 4,
-    title: 'Very important',
-  },
-  {
-    id: 5,
-    title: 'Completed',
-  },
-  {
-    id: 6,
-    title: 'Uncompleted',
-  },
-];
+export enum CategeryStore {
+  All = 'All',
+  NotImportant = 'Not important',
+  LittleImportant = 'Little Important',
+  Important = 'Important',
+  VeryImportant = 'Very Important',
+  Completed = 'Completed',
+  Uncompleted = 'Uncompleted',
+}
+
+export const CategeryStor: { [key: string]: string } = {
+  all: 'All',
+  notImportant: 'Not Important',
+  littleImportant: 'Little Important',
+  important: 'Important',
+  veryImportant: 'Very Important',
+  completed: 'Completed',
+  uncompleted: 'Uncompleted',
+};
+
 export const DEFAULT_STORE: Todo = {
   name: '',
   priority: '1',

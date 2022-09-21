@@ -1,11 +1,13 @@
-import styles from './LeftSide.module.scss';
 import { useTodo } from '../../utils';
-import { CATEGORY_STORE } from '../../store';
+
+import { CategeryStor } from '../../store';
+
+import styles from './LeftSide.module.scss';
 
 const LeftSide: React.FC = () => {
   const { selectedCategory, setSelectedCategory } = useTodo();
 
-  const onClickCategory = (i: number) => {
+  const onClickCategory = (i: string) => {
     setSelectedCategory(i);
   };
 
@@ -13,13 +15,17 @@ const LeftSide: React.FC = () => {
     <div className={styles.leftBar}>
       <div className={styles.category}>Category</div>
       <div className={styles.categoryList}>
-        {CATEGORY_STORE.map((el, i) => (
+        {Object.keys(CategeryStor).map((el, i) => (
           <div
-            onClick={() => onClickCategory(i)}
+            onClick={() => onClickCategory(CategeryStor[el])}
             key={i}
-            className={selectedCategory === i ? styles.active : styles.card}
+            className={
+              selectedCategory === CategeryStor[el]
+                ? styles.active
+                : styles.card
+            }
           >
-            <div>{el.title}</div>
+            <div>{CategeryStor[el]}</div>
           </div>
         ))}
       </div>

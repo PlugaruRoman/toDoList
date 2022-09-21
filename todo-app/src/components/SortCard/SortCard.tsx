@@ -1,38 +1,33 @@
 import React from 'react';
-import styles from './SortCard.module.scss';
+
 import { useTodo } from '../../utils';
 
+import styles from './SortCard.module.scss';
+
 const SortCard: React.FC = () => {
-  const [open, setOpen] = React.useState<boolean>(false);
-  const list: string[] = ['priority', 'asc priority', 'desc priority'];
+  const { setSelectedPriority, selectedPriority } = useTodo();
 
-  const { setSelected, selected } = useTodo();
-
-  const onClickList = (i: number) => {
-    setSelected(i);
-    setOpen(false);
+  const onClickListPriority = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = event.target;
+    setSelectedPriority(value);
   };
 
   return (
     <div className={styles.sortCard}>
       <div className={styles.sort}>
-        <b>sort by :</b>
-        <span onClick={() => setOpen(!open)}>{list[selected]}</span>
-        {open && (
-          <div className={styles.sortPopupActive}>
-            <ul>
-              {list.map((el: string, i: number) => (
-                <li
-                  onClick={() => onClickList(i)}
-                  className={selected === i ? styles.active : ''}
-                  key={i}
-                >
-                  {el}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <label htmlFor='priority'>
+          priority:
+          <select
+            className={styles.textTodo}
+            name='priority'
+            id='priority'
+            onChange={onClickListPriority}
+            value={selectedPriority}
+          >
+            <option value='1'>↑ Ascending ↑</option>
+            <option value='2'>↓ Descending ↓</option>
+          </select>
+        </label>
       </div>
     </div>
   );

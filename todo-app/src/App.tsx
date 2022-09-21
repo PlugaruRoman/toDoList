@@ -1,8 +1,10 @@
-import styles from './App.module.scss';
+import { TodoProvider } from './utils';
+
 import TodoPanel from './components/TodoPanel/TodoPanel';
 import Header from './components/Header/Header';
 import Content from './components/Content/Content';
-import { TodoProvider } from './utils';
+
+import styles from './App.module.scss';
 
 const App = () => {
   return (

@@ -1,6 +1,8 @@
 import React from 'react';
-import styles from './TodoPanel.module.scss';
+
 import { useTodo } from '../../utils';
+
+import styles from './TodoPanel.module.scss';
 
 interface AddTodoPanelProps {
   mode: 'add';
@@ -17,7 +19,7 @@ const TodoPanel: React.FC<TodoPanelProps> = (props) => {
 
   const { addTodo, onChange, changeTodo, todo } = useTodo();
 
-  const onClick = () => {
+  const onClickAddButton = () => {
     if (todo) {
       const todoItem = {
         name: todo.name,
@@ -26,7 +28,6 @@ const TodoPanel: React.FC<TodoPanelProps> = (props) => {
       if (isEdit) {
         return changeTodo(todoItem);
       }
-
       addTodo(todoItem);
     }
   };
@@ -43,6 +44,7 @@ const TodoPanel: React.FC<TodoPanelProps> = (props) => {
           onChange={onChange}
           value={todo ? todo.name : ''}
         />
+
         <div className={styles.priority}>
           <label htmlFor='priority'>
             priority:
@@ -61,13 +63,15 @@ const TodoPanel: React.FC<TodoPanelProps> = (props) => {
           </label>
         </div>
       </div>
+
       {!isEdit && (
-        <button onClick={() => onClick()} className={styles.addTodoButton}>
+        <button onClick={onClickAddButton} className={styles.addTodoButton}>
           ADD
         </button>
       )}
+
       {isEdit && (
-        <button onClick={() => onClick()} className={styles.addTodoButton}>
+        <button onClick={onClickAddButton} className={styles.addTodoButton}>
           EDIT
         </button>
       )}

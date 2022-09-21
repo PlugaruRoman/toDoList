@@ -5,11 +5,7 @@ import { CategeryStor } from '../../store';
 import styles from './LeftSide.module.scss';
 
 const LeftSide: React.FC = () => {
-  const { selectedCategory, setSelectedCategory } = useTodo();
-
-  const onClickCategory = (i: string) => {
-    setSelectedCategory(i);
-  };
+  const { selectedCategory, onClickCategory } = useTodo();
 
   return (
     <div className={styles.leftBar}>

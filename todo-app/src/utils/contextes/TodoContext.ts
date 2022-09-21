@@ -18,6 +18,7 @@ export interface TodoContextProps {
   setSelectedPriority: (id: Category['title']) => void;
   selectedCategory: string;
   setSelectedCategory: (id: Category['title']) => void;
+  onClickCategory: (i: string) => void;
 }
 
 export const TodoContext = React.createContext<TodoContextProps>({
@@ -34,4 +35,5 @@ export const TodoContext = React.createContext<TodoContextProps>({
   setSelectedPriority: () => {},
   selectedCategory: '',
   setSelectedCategory: () => {},
+  onClickCategory: () => {},
 });

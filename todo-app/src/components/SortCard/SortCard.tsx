@@ -24,8 +24,9 @@ const SortCard: React.FC = () => {
             onChange={onClickListPriority}
             value={selectedPriority}
           >
-            <option value='1'>↑ Ascending ↑</option>
-            <option value='2'>↓ Descending ↓</option>
+            <option value='1'>→ Default ←</option>
+            <option value='2'>↑ Ascending ↑</option>
+            <option value='3'>↓ Descending ↓</option>
           </select>
         </label>
       </div>

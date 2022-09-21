@@ -9,11 +9,17 @@ import TodoPanel from '../TodoPanel/TodoPanel';
 import styles from './Content.module.scss';
 
 const Content: React.FC = () => {
-  const { todos, todoIdForEdIT, selectedCategory } = useTodo();
+  const { todos, todoIdForEdIT, selectedCategory, selectedPriority } =
+    useTodo();
 
   useEffect(() => {
-    todos.filter((todo) => todo.priority === '4');
-  }, [todos, selectedCategory]);
+    let res = todos.filter(
+      (todo) => todo.priority === '3' && selectedCategory === 'Important'
+    );
+    console.log(res);
+    console.log(todos[5].priority);
+    console.log(selectedCategory);
+  }, [todos, selectedCategory, selectedPriority]);
 
   return (
     <div className={styles.content}>

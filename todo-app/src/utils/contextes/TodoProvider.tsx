@@ -87,13 +87,18 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
     setTodo(DEFAULT_STORE);
     setTodoIdForEdit(null);
   };
+  //eslint-disable-next-line
+  const onClickCategory = (i: string) => {
+    setSelectedCategory(i);
+  };
 
   React.useEffect(() => {
-    if (selectedPriority === '1') {
+    if (selectedPriority === '2') {
       todos.sort((a, b) => +a.priority - +b.priority);
-    } else {
+    } else if (selectedPriority === '3') {
       todos.sort((a, b) => +b.priority - +a.priority);
     }
+    return () => {};
   }, [selectedPriority, todos]);
 
   React.useEffect(() => {
@@ -116,6 +121,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       selectedPriority,
       selectedCategory,
       setSelectedCategory,
+      onClickCategory,
     }),
     [
       todos,
@@ -131,6 +137,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       selectedPriority,
       selectedCategory,
       setSelectedCategory,
+      onClickCategory,
     ]
   );
 

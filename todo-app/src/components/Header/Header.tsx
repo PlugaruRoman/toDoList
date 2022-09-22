@@ -1,6 +1,6 @@
-import { useTodo } from '../../utils';
+import { useTodo } from 'utils';
 
-import SortCard from '../SortCard/SortCard';
+import SortCard from 'components/SortCard/SortCard';
 
 import styles from './Header.module.scss';
 

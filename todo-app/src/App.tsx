@@ -1,8 +1,7 @@
-import { TodoProvider } from './utils';
+import { TodoProvider } from 'utils';
 
-import TodoPanel from './components/TodoPanel/TodoPanel';
-import Header from './components/Header/Header';
-import Content from './components/Content/Content';
+import Header from 'components/Header/Header';
+import Content from 'components/Content/Content';
 
 import styles from './App.module.scss';
 
@@ -12,7 +11,6 @@ const App = () => {
       <div className={styles.wrapper}>
         <div className={styles.app}>
           <Header />
-          <TodoPanel mode='add' />
           <Content />
         </div>
       </div>

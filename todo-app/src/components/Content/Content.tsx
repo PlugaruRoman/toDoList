@@ -1,32 +1,22 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { useTodo } from '../../utils';
+import { useTodo } from 'utils';
 
-import LeftSide from '../LeftSide/LeftSide';
-import Card from '../Card/Card';
-import TodoPanel from '../TodoPanel/TodoPanel';
+import LeftSide from 'components/LeftSide/LeftSide';
+import Card from 'components/Card/Card';
+import TodoPanel from 'components/TodoPanel/TodoPanel';
 
 import styles from './Content.module.scss';
 
 const Content: React.FC = () => {
-  const { todos, todoIdForEdIT, selectedCategory, selectedPriority } =
-    useTodo();
-
-  useEffect(() => {
-    let res = todos.filter(
-      (todo) => todo.priority === '3' && selectedCategory === 'Important'
-    );
-    console.log(res);
-    console.log(todos[5].priority);
-    console.log(selectedCategory);
-  }, [todos, selectedCategory, selectedPriority]);
+  const { todos, todoIdForEdIT, filterCategory } = useTodo();
 
   return (
     <div className={styles.content}>
       <LeftSide />
       <div className={styles.overflow}>
         <div className={styles.display}>
-          {todos.map((todo) => {
+          {todos.filter(filterCategory).map((todo) => {
             if (todo.id === todoIdForEdIT)
               return (
                 <TodoPanel
@@ -38,6 +28,7 @@ const Content: React.FC = () => {
             return <Card todos={todo} key={todo.id} />;
           })}
         </div>
+        <TodoPanel mode='add' />
       </div>
     </div>
   );

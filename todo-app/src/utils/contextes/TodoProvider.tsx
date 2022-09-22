@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TodoContext } from './TodoContext';
 
-import { DEFAULT_STORE } from '../../store';
+import { DEFAULT_STORE } from 'store';
 
 const getLocalItems = (): Todos[] => {
   let store = localStorage.getItem('store') || '[]';
@@ -24,7 +24,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
     null
   );
   const [selectedCategory, setSelectedCategory] = React.useState<string>('All');
-  const [selectedPriority, setSelectedPriority] = React.useState<string>('');
+  const [selectedPriority, setSelectedPriority] = React.useState<string>('def');
 
   //eslint-disable-next-line
   const onChange = (
@@ -87,24 +87,44 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
     setTodo(DEFAULT_STORE);
     setTodoIdForEdit(null);
   };
+
   //eslint-disable-next-line
   const onClickCategory = (i: string) => {
     setSelectedCategory(i);
   };
 
-  React.useEffect(() => {
-    if (selectedPriority === '2') {
-      todos.sort((a, b) => +a.priority - +b.priority);
-    } else if (selectedPriority === '3') {
-      todos.sort((a, b) => +b.priority - +a.priority);
-    }
-    return () => {};
-  }, [selectedPriority, todos]);
+  //eslint-disable-next-line
+  const onClickListPriority = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = event.target;
+    setSelectedPriority(value);
+  };
+
+  //eslint-disable-next-line
+  const filterCategory = (value: Todos) => {
+    if (selectedCategory === 'All') return value.priority >= '0';
+    else if (selectedCategory === 'Not Important')
+      return value.priority === '1';
+    else if (selectedCategory === 'Little Important')
+      return value.priority === '2';
+    else if (selectedCategory === 'Important') return value.priority === '3';
+    else if (selectedCategory === 'Very Important')
+      return value.priority === '4';
+    else if (selectedCategory === 'Completed') return value.checked === true;
+    else if (selectedCategory === 'Uncompleted') return value.checked === false;
+  };
 
   React.useEffect(() => {
     localStorage.setItem('store', JSON.stringify(todos));
     return () => {};
   }, [todos]);
+
+  React.useEffect(() => {
+    selectedPriority === 'asc' &&
+      todos.sort((a, b) => +a.priority - +b.priority);
+
+    selectedPriority === 'desc' &&
+      todos.sort((a, b) => +b.priority - +a.priority);
+  }, [selectedPriority, todos]);
 
   const value = React.useMemo(
     () => ({
@@ -122,7 +142,10 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       selectedCategory,
       setSelectedCategory,
       onClickCategory,
+      onClickListPriority,
+      filterCategory,
     }),
+
     [
       todos,
       todoIdForEdIT,
@@ -138,6 +161,8 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       selectedCategory,
       setSelectedCategory,
       onClickCategory,
+      onClickListPriority,
+      filterCategory,
     ]
   );
 

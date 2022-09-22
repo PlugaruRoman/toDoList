@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { useTodo } from '../../utils';
+import { useTodo } from 'utils';
 
 import styles from './TodoPanel.module.scss';
 
@@ -15,9 +13,9 @@ interface EditTodoPanelProps {
 type TodoPanelProps = AddTodoPanelProps | EditTodoPanelProps;
 
 const TodoPanel: React.FC<TodoPanelProps> = (props) => {
-  const isEdit = props.mode === 'edit';
-
   const { addTodo, onChange, changeTodo, todo } = useTodo();
+
+  const isEdit = props.mode === 'edit';
 
   const onClickAddButton = () => {
     if (todo) {
@@ -33,7 +31,7 @@ const TodoPanel: React.FC<TodoPanelProps> = (props) => {
   };
 
   return (
-    <div className={styles.addTodo}>
+    <div className={isEdit ? styles.editTodo : styles.addTodo}>
       <div className='inputcontainer'>
         <input
           className={styles.textTodo}

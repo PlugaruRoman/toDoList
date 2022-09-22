@@ -1,16 +1,11 @@
 import React from 'react';
 
-import { useTodo } from '../../utils';
+import { useTodo } from 'utils';
 
 import styles from './SortCard.module.scss';
 
 const SortCard: React.FC = () => {
-  const { setSelectedPriority, selectedPriority } = useTodo();
-
-  const onClickListPriority = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const { value } = event.target;
-    setSelectedPriority(value);
-  };
+  const { selectedPriority, onClickListPriority } = useTodo();
 
   return (
     <div className={styles.sortCard}>
@@ -24,9 +19,9 @@ const SortCard: React.FC = () => {
             onChange={onClickListPriority}
             value={selectedPriority}
           >
-            <option value='1'>→ Default ←</option>
-            <option value='2'>↑ Ascending ↑</option>
-            <option value='3'>↓ Descending ↓</option>
+            <option value='def'>→ Default ←</option>
+            <option value='asc'>↑ Ascending ↑</option>
+            <option value='desc'>↓ Descending ↓</option>
           </select>
         </label>
       </div>

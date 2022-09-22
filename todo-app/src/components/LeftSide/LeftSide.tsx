@@ -1,6 +1,6 @@
-import { useTodo } from '../../utils';
+import { useTodo } from 'utils';
 
-import { CategeryStor } from '../../store';
+import { CategeryStor } from 'store';
 
 import styles from './LeftSide.module.scss';
 

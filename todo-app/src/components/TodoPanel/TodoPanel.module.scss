@@ -1,7 +1,7 @@
 .addTodo {
   position: absolute;
-  right: 20px;
   bottom: 10px;
+  right: 10px;
   width: 200px;
   height: 80px;
   border: solid 2px black;
@@ -18,13 +18,47 @@
     height: 20px;
     border-radius: 20px;
   }
+  .priority {
+    margin-left: 16px;
+    display: flex;
+    align-items: center;
+    input {
+      margin: 0px 0px 0px 10px;
+    }
+  }
 }
 
-.priority {
-  margin-left: 16px;
-  display: flex;
-  align-items: center;
-  input {
-    margin: 0px 0px 0px 10px;
+.editTodo {
+  position: relative;
+  margin: 25px;
+  width: 180px;
+  height: 200px;
+  border: 2px solid black;
+
+  .textTodo {
+    margin-top: 40px;
+    height: 25px;
+    border: 2px solid black;
+  }
+  .addTodoButton {
+    font-weight: bold;
+    font-size: 15px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background: rgb(13, 254, 1);
+    color: rgb(0, 0, 0);
+    width: 176px;
+    height: 50px;
+    &:hover {
+      background: rgb(150, 255, 144);
+    }
+  }
+  .priority {
+    display: flex;
+    align-items: center;
+    input {
+      margin: 0px 0px 0px 10px;
+    }
   }
 }

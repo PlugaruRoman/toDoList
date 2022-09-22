@@ -23,8 +23,10 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   const [todoIdForEdIT, setTodoIdForEdit] = React.useState<Todos['id'] | null>(
     null
   );
-  const [selectedCategory, setSelectedCategory] = React.useState<string>('All');
-  const [selectedPriority, setSelectedPriority] = React.useState<string>('def');
+  const [selectedCategory, setSelectedCategory] =
+    React.useState<Category['title']>('All');
+  const [selectedPriority, setSelectedPriority] =
+    React.useState<Category['title']>('def');
 
   //eslint-disable-next-line
   const onChange = (
@@ -89,14 +91,16 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   };
 
   //eslint-disable-next-line
-  const onClickCategory = (i: string) => {
-    setSelectedCategory(i);
+  const onClickCategory = (title: Category['title']): void => {
+    setSelectedCategory(title);
   };
 
   //eslint-disable-next-line
   const onClickListPriority = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     setSelectedPriority(value);
+    value === 'asc' && todos.sort((a, b) => +a.priority - +b.priority);
+    value === 'desc' && todos.sort((a, b) => +b.priority - +a.priority);
   };
 
   //eslint-disable-next-line
@@ -118,28 +122,20 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
     return () => {};
   }, [todos]);
 
-  React.useEffect(() => {
-    selectedPriority === 'asc' &&
-      todos.sort((a, b) => +a.priority - +b.priority);
-
-    selectedPriority === 'desc' &&
-      todos.sort((a, b) => +b.priority - +a.priority);
-  }, [selectedPriority, todos]);
-
   const value = React.useMemo(
     () => ({
       todos,
+      todo,
       todoIdForEdIT,
+      selectedPriority,
+      selectedCategory,
       checkTodo,
       deleteTodo,
       selectTodoIdForEdit,
       addTodo,
       onChange,
-      todo,
       changeTodo,
       setSelectedPriority,
-      selectedPriority,
-      selectedCategory,
       setSelectedCategory,
       onClickCategory,
       onClickListPriority,
@@ -149,16 +145,16 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
     [
       todos,
       todoIdForEdIT,
+      todo,
+      selectedPriority,
+      selectedCategory,
       checkTodo,
       deleteTodo,
       selectTodoIdForEdit,
       addTodo,
       onChange,
-      todo,
       changeTodo,
       setSelectedPriority,
-      selectedPriority,
-      selectedCategory,
       setSelectedCategory,
       onClickCategory,
       onClickListPriority,

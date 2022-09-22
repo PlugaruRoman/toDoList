@@ -3,6 +3,9 @@ import React from 'react';
 export interface TodoContextProps {
   todos: Todos[];
   todoIdForEdIT: Todos['id'] | null;
+  todo: Todo | null;
+  selectedPriority: string;
+  selectedCategory: string;
   checkTodo: (id: Todos['id']) => void;
   deleteTodo: (id: Todos['id']) => void;
   selectTodoIdForEdit: (id: Todos['id']) => void;
@@ -12,12 +15,9 @@ export interface TodoContextProps {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>
   ) => void;
-  todo: Todo | null;
   changeTodo: ({ name, priority }: Omit<Todo, 'checked' | 'id'>) => void;
-  selectedPriority: string;
-  setSelectedPriority: (id: Category['title']) => void;
-  selectedCategory: string;
-  setSelectedCategory: (id: Category['title']) => void;
+  setSelectedPriority: (it: Category['title']) => void;
+  setSelectedCategory: (title: Category['title']) => void;
   onClickCategory: (i: string) => void;
   onClickListPriority: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   filterCategory: (value: Todos) => void;
@@ -25,19 +25,19 @@ export interface TodoContextProps {
 
 export const TodoContext = React.createContext<TodoContextProps>({
   todos: [],
+  todo: null,
   todoIdForEdIT: null,
+  selectedCategory: '',
+  selectedPriority: '',
   checkTodo: () => {},
   deleteTodo: () => {},
   selectTodoIdForEdit: () => {},
   addTodo: () => {},
   onChange: () => {},
-  todo: null,
   changeTodo: () => {},
-  selectedPriority: '',
   setSelectedPriority: () => {},
-  selectedCategory: '',
   setSelectedCategory: () => {},
   onClickCategory: () => {},
-  onClickListPriority(event) {},
+  onClickListPriority: () => {},
   filterCategory: () => {},
 });

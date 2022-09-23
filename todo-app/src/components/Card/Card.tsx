@@ -10,6 +10,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ todos }) => {
   const { checkTodo, deleteTodo, selectTodoIdForEdit } = useTodo();
+
   const time = dayjs().format('DD/MM/YYYY');
 
   return (

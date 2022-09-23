@@ -5,6 +5,7 @@ import styles from './TodoPanel.module.scss';
 interface AddTodoPanelProps {
   mode: 'add';
 }
+
 interface EditTodoPanelProps {
   mode: 'edit';
   editTodo: Omit<Todo, 'id' | 'checked'>;
